@@ -368,6 +368,7 @@ h2 {
     .img-modal-content { padding: 16px; }
 }
 
+
 /* Footer */
 footer {
     background: #000;
@@ -471,6 +472,106 @@ footer a {
 
     .main-nav ul { flex-direction: column; gap: 14px; }
     .hamburger { display: block; }
+}
+
+/* Plataformas disponíveis section */
+.plataformas {
+    background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(34,0,0,0.6) 100%);
+    padding: 60px 20px;
+}
+
+.plataformas h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ffdddd;
+}
+
+.plataformas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.plataforma {
+    background: linear-gradient(135deg, #1a0000 0%, #2a0a0a 100%);
+    border: 2px solid #330000;
+    padding: 25px 20px;
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.plataforma:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(204, 0, 0, 0.4), inset 0 0 15px rgba(204, 0, 0, 0.2);
+    border-color: #cc0000;
+}
+
+.plataforma img {
+    max-width: 80px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.plataforma:hover img {
+    transform: scale(1.08);
+}
+
+.plataforma span {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffdddd;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.plataforma a {
+    background: rgba(204, 0, 0, 0.2);
+    border: 1px solid #cc0000;
+    color: #ffbbbb;
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.plataforma a:hover {
+    background: rgba(204, 0, 0, 0.4);
+    color: #ffdddd;
+    box-shadow: 0 0 10px rgba(204, 0, 0, 0.5);
+}
+
+/* Mobile responsiveness para plataformas */
+@media (max-width: 600px) {
+    .plataformas {
+        padding: 40px 12px;
+    }
+
+    .plataformas h2 {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+    }
+
+    .plataformas-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .plataforma {
+        padding: 20px 15px;
+    }
 }
 
 /* Smooth anchor scroll */
