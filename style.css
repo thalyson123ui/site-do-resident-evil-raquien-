@@ -35,7 +35,7 @@ body::before{
 content:"";
 position:fixed;
 inset:0;
-background:url("resident-evil-9-requeim-raccon-city.jpg");
+background:url("resident-evil-9-requeim-raccon-city.jpg") no-repeat center/cover;
 opacity:0.15;
 pointer-events:none;
 animation:fog 60s linear infinite;
@@ -129,6 +129,19 @@ display:none;
 background:none;
 border:none;
 cursor:pointer;
+}
+
+.music-toggle{
+  background:none;
+  border:none;
+  cursor:pointer;
+  color:#ffbbbb;
+  font-size:1.2rem;
+  margin-left:10px;
+}
+
+.music-toggle.playing{
+  color:#ff4444;
 }
 
 .hamburger span{

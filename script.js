@@ -295,6 +295,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* ================================
+     Background Music
+  =================================*/
+  const bgMusic = document.getElementById('bgMusic');
+  const musicToggle = document.getElementById('musicToggle');
+
+  if (bgMusic && musicToggle) {
+    // update icon based on state
+    const updateIcon = () => {
+      if (bgMusic.paused) {
+        musicToggle.textContent = '🔊';
+        musicToggle.classList.remove('playing');
+      } else {
+        musicToggle.textContent = '🔈';
+        musicToggle.classList.add('playing');
+      }
+    };
+
+    musicToggle.addEventListener('click', () => {
+      if (bgMusic.paused) {
+        bgMusic.play().catch(() => {
+          // autoplay may be blocked; ignore
+        });
+      } else {
+        bgMusic.pause();
+      }
+      updateIcon();
+    });
+
+    // make sure icon matches initial state
+    updateIcon();
+
+    // pause when page hidden
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        bgMusic.pause();
+        updateIcon();
+      }
+    });
+  }
+
+  /* ================================
      Hero Animation
   =================================*/
   const heroContent = $(".hero-content");
