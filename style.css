@@ -47,6 +47,12 @@ z-index:-1;
 100%{transform:translateX(-400px);}
 }
 
+@media (prefers-reduced-motion: reduce) {
+  body::before {
+    animation: none;
+  }
+}
+
 /* TITLES */
 
 h1,h2,h3{
@@ -129,6 +135,12 @@ display:none;
 background:none;
 border:none;
 cursor:pointer;
+min-height: 48px;
+min-width: 48px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
 }
 
 .music-toggle{
@@ -138,6 +150,11 @@ cursor:pointer;
   color:#ffbbbb;
   font-size:1.2rem;
   margin-left:10px;
+  min-height: 48px;
+  min-width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .music-toggle.playing{
@@ -272,6 +289,7 @@ text-align:center;
 display:flex;
 justify-content:center;
 padding:10px;
+position: relative;
 }
 
 .responsive-iframe{
@@ -439,7 +457,7 @@ min-height:60vh;
 }
 
 .personagens .grid{
-grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
 }
 
 .lugares .grid{
