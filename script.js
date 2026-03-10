@@ -9,6 +9,61 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* ================================
+     Theme Toggle (Dark/Light Mode)
+  =================================*/
+  const themeToggle = $("#themeToggle");
+  const htmlElement = document.documentElement;
+
+  // Inicializar o tema
+  const initTheme = () => {
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const shouldUseDark = savedTheme === "dark" || (!savedTheme && prefersDark);
+
+    if (shouldUseDark) {
+      htmlElement.classList.remove("light-mode");
+      updateThemeIcon();
+    } else {
+      htmlElement.classList.add("light-mode");
+      updateThemeIcon();
+    }
+  };
+
+  // Atualizar o ícone do botão
+  const updateThemeIcon = () => {
+    if (themeToggle) {
+      const isLightMode = htmlElement.classList.contains("light-mode");
+      themeToggle.textContent = isLightMode ? "🌙" : "☀️";
+      themeToggle.setAttribute("aria-label", isLightMode ? "Ativar modo escuro" : "Ativar modo claro");
+    }
+  };
+
+  // Toggle do tema
+  const toggleTheme = () => {
+    htmlElement.classList.toggle("light-mode");
+    const isLightMode = htmlElement.classList.contains("light-mode");
+    localStorage.setItem("theme", isLightMode ? "light" : "dark");
+    updateThemeIcon();
+  };
+
+  if (themeToggle) {
+    themeToggle.addEventListener("click", toggleTheme);
+  }
+
+  // Inicializar o tema ao carregar
+  initTheme();
+
+  // Listener para mudanças de preferência do sistema
+  if (window.matchMedia) {
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+      if (!localStorage.getItem("theme")) {
+        initTheme();
+      }
+    });
+  }
+
+
+  /* ================================
      Mobile Menu
   =================================*/
   const hamburger = $("#hamburger");
