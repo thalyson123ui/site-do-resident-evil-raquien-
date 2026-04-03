@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://resident-evil-requiem-site.com/sitemap.xml
