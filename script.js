@@ -367,6 +367,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
 
+    // Autoplay on load
+    bgMusic.play().catch(() => {
+      // autoplay may be blocked; ignore
+    });
+
     musicToggle.addEventListener('click', () => {
       if (bgMusic.paused) {
         bgMusic.play().catch(() => {
@@ -406,5 +411,28 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 120);
 
   }
+
+  /* ================================
+     Click Animations
+  =================================*/
+  // Animação para cards de personagens
+  $$(".personagens .card").forEach(card => {
+    card.addEventListener("click", () => {
+      card.classList.add("clicked");
+      setTimeout(() => {
+        card.classList.remove("clicked");
+      }, 500); // Duração da animação shake
+    });
+  });
+
+  // Animação para lugares
+  $$(".lugares .grid > div").forEach(lugar => {
+    lugar.addEventListener("click", () => {
+      lugar.classList.add("clicked");
+      setTimeout(() => {
+        lugar.classList.remove("clicked");
+      }, 600); // Duração da animação pulse
+    });
+  });
 
 });
