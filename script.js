@@ -1,10 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   /* ================================
-     Helpers
+     Skip Link Focus Management
   =================================*/
-  const $ = (selector, scope = document) => scope.querySelector(selector);
-  const $$ = (selector, scope = document) => [...scope.querySelectorAll(selector)];
+  const skipLink = $(".skip-link");
+
+  if (skipLink) {
+    skipLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      const target = document.querySelector("#hero");
+      if (target) {
+        target.focus();
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  }
 
 
 
@@ -220,6 +230,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (e.key === "ArrowLeft") showPrev();
       if (e.key === "ArrowRight") showNext();
       if (e.key === "Escape") closeImage();
+      if (e.key === "Home") openImage(0);
+      if (e.key === "End") openImage(imgList.length - 1);
 
     });
 
